@@ -215,10 +215,12 @@
 
             <android.inputmethodservice.ExtractEditText
                 android:id="@+id/editin1"
+                android:theme="@style/MyEditText"
                 android:layout_width="194dp"
                 android:layout_height="wrap_content"
                 android:layout_margin="@android:dimen/app_icon_size"
-                android:layout_weight="2">
+                android:layout_weight="2"
+                >
 
             </android.inputmethodservice.ExtractEditText>
 

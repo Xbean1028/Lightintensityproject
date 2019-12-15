@@ -249,14 +249,14 @@ public class PullrefreshListviewAdapter extends BaseAdapter {
                         String add_url = Config.all_url + "/iocm/app/cmd/v1.4.0/deviceCommands?appId=" + login_appid;
                         try {
 
-                            json = DataManager.Comened_DEVICEID2(mContext, add_url, login_appid, token, deviceId.get(position), String.valueOf(editin1.getContext()));
+                            json = DataManager.Comened_DEVICEID2(mContext, add_url, login_appid, token, deviceId.get(position), editin1.getText().toString());
                             if (json.equals(tuatus)) {
                                 Looper.prepare();
-                                Toast.makeText(editin1.getContext(), "下发成功", Toast.LENGTH_SHORT).show();
+                                Toast.makeText(editin1.getContext(), editin1.getText().toString() + " 下发成功", Toast.LENGTH_SHORT).show();
                                 Looper.loop();
                             } else {
                                 Looper.prepare();
-                                Toast.makeText(editin1.getContext(), "下发失败", Toast.LENGTH_SHORT).show();
+                                Toast.makeText(editin1.getContext(), editin1.getText().toString() + " 下发失败", Toast.LENGTH_SHORT).show();
                                 Looper.loop();
                             }
 
