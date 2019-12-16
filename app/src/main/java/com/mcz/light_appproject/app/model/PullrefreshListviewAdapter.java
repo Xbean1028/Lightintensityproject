@@ -236,6 +236,10 @@ public class PullrefreshListviewAdapter extends BaseAdapter {
         ////Bean change
         Button butsub1 = (Button) convertView.findViewById(R.id.butsub1);
         final EditText editin1 = (EditText) convertView.findViewById(R.id.editin1);
+        editin1.requestFocus();
+
+
+
         butsub1.setOnClickListener(new View.OnClickListener() {
 
             @Override

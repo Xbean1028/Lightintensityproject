@@ -211,18 +211,22 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:background="@drawable/list_allshow_item_bg"
-            android:gravity="center">
+            android:clickable="true"
+            android:focusable="true"
+            android:focusableInTouchMode="true"
+            android:gravity="center_vertical"
+            >
 
-            <android.inputmethodservice.ExtractEditText
+            <EditText
                 android:id="@+id/editin1"
                 android:theme="@style/MyEditText"
                 android:layout_width="194dp"
                 android:layout_height="wrap_content"
                 android:layout_margin="@android:dimen/app_icon_size"
                 android:layout_weight="2"
-                >
+                />
 
-            </android.inputmethodservice.ExtractEditText>
+
 
             <Button
                 android:id="@+id/butsub1"

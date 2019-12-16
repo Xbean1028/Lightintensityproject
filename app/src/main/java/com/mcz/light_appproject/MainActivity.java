@@ -8,6 +8,7 @@ import android.graphics.drawable.BitmapDrawable;
 import android.media.AudioManager;
 import android.media.MediaPlayer;
 import android.os.AsyncTask;
+import android.os.Build;
 import android.os.Bundle;
 import android.preference.PreferenceManager;
 import android.support.v7.app.AppCompatActivity;
@@ -140,7 +141,7 @@ public class MainActivity extends AppCompatActivity {
             }
         });
         //搜索設備時候監聽圖片
-
+/*
         imgSrearch.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -157,16 +158,16 @@ public class MainActivity extends AppCompatActivity {
                 }
 
             }
-        });
+        });*/
       bofang();
-
+/*
         searchDelete.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 edtDvidSearch.setText("");
             }
         });//刪除編輯款内容
-
+*/
         ///listview
         mNoMoreView = getLayoutInflater().inflate(R.layout.no_device_more_footer, null);
        // mListView.setOnItemClickListener(this);
@@ -807,6 +808,7 @@ public class MainActivity extends AppCompatActivity {
         hintKbTwo();
     }
     @Override
+
     public boolean onKeyDown(int keyCode, KeyEvent event) {
         /**
          * 监听返回按钮 (back键)
@@ -814,6 +816,7 @@ public class MainActivity extends AppCompatActivity {
          */
         if (keyCode == KeyEvent.KEYCODE_BACK
                 && event.getAction() == KeyEvent.ACTION_DOWN) {
+
             if (System.currentTimeMillis() - backfirsttime > 2000) {
                 Toast.makeText(getApplication(), "再按一次退出程序", Toast.LENGTH_SHORT).show();
                 backfirsttime = System.currentTimeMillis();
@@ -833,7 +836,24 @@ public class MainActivity extends AppCompatActivity {
         }
         return super.onKeyDown(keyCode, event);
     }
+
     //Bean
+    @Override
+    public boolean dispatchKeyEvent( KeyEvent event) {
+        super.dispatchKeyShortcutEvent(event);
+        if (event.getAction() == KeyEvent.ACTION_DOWN && event.getKeyCode() == KeyEvent.KEYCODE_DEL){//监听到删除按钮被按下
+            EditText editin1 = (EditText)findViewById(R.id.editin1);
+            String text = editin1.getText().toString();
+            if(text.length() > 0 ){//判断文本框是否有文字，如果有就去掉最后一位
+                String newText = text.substring(0, text.length() - 1);
+                editin1.setText(newText);
+                editin1.setSelection(newText.length());//设置焦点在最后
+            };
+        }
+        return super.dispatchKeyShortcutEvent(event);
+    }
+
+
 
 
 
