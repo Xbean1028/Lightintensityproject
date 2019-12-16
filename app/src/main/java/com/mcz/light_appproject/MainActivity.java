@@ -140,6 +140,7 @@ public class MainActivity extends AppCompatActivity {
             }
         });
         //搜索設備時候監聽圖片
+
         imgSrearch.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -204,7 +205,7 @@ public class MainActivity extends AppCompatActivity {
         mListView.getRefreshableView().removeFooterView(mNoMoreView);
 
 
-    }
+    }  ////end init
     /**
      * listview添加数据
      *

@@ -246,7 +246,7 @@ public class PullrefreshListviewAdapter extends BaseAdapter {
                     @Override
                     public void run() {
 
-                        String add_url = Config.all_url + "/iocm/app/cmd/v1.4.0/deviceCommands?appId=" + login_appid;
+                        String add_url = Config.all_url + "/iocm/app/cmd/v1.4.0/dev0iceCommands?appId=" + login_appid;
                         try {
 
                             json = DataManager.Comened_DEVICEID2(mContext, add_url, login_appid, token, deviceId.get(position), editin1.getText().toString());

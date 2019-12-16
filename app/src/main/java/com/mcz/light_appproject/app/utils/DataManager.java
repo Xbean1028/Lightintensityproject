@@ -1,6 +1,8 @@
 package com.mcz.light_appproject.app.utils;
 
 import android.content.Context;
+import android.util.Log;
+import android.widget.Toast;
 
 import org.apache.http.HttpEntity;
 import org.apache.http.HttpResponse;
@@ -34,6 +36,7 @@ import java.util.Set;
 import javax.net.ssl.KeyManagerFactory;
 import javax.net.ssl.TrustManagerFactory;
 
+import static android.content.ContentValues.TAG;
 import static com.mcz.light_appproject.app.utils.Config.SELFCERTPATH;
 import static com.mcz.light_appproject.app.utils.Config.SELFCERTPWD;
 import static com.mcz.light_appproject.app.utils.Config.TRUSTCAPATH;
@@ -170,6 +173,7 @@ public class DataManager {
         params.add(new BasicNameValuePair("timeout", "600"));
         String json = NetConnectHeaderDataJSON.request(mContext, NetConnectHeaderDataJSON.REQUEST_TYPE_POST,
                 serverurl,app_key,accessToken, params);
+        Log.e(TAG, json);
         return json;
     }
 //命令下发
@@ -193,10 +197,13 @@ public class DataManager {
         params.add(new BasicNameValuePair("serviceId", "SendStr_toBoard"));
         params.add(new BasicNameValuePair("method", "SetLedString"));
         params.add(new BasicNameValuePair("setstr", LED));
-        String json = NETCommned.request(mContext, NETCommned.REQUEST_TYPE_POST,
+        String json = NETCommned.request2(mContext, NETCommned.REQUEST_TYPE_POST,
                 serverurl,app_key,accessToken, params);
+        Log.e(TAG, json);
+        //Toast.makeText(this.getContext(), editin1.getText().toString() + " 下发成功", Toast.LENGTH_SHORT).show();
         return json;
     }
+
 //删除直连设备
     public static String Delete_DEVICEID(Context mContext, String serverurl,String app_key,String accessToken)
             throws Exception{
