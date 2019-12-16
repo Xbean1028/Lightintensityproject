@@ -239,7 +239,6 @@ public class PullrefreshListviewAdapter extends BaseAdapter {
         editin1.requestFocus();
 
 
-
         butsub1.setOnClickListener(new View.OnClickListener() {
 
             @Override
