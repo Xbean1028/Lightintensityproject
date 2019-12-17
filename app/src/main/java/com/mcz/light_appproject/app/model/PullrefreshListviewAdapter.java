@@ -5,9 +5,12 @@ import android.content.Intent;
 import android.os.Handler;
 import android.os.Looper;
 import android.os.Message;
+import android.text.Editable;
+import android.text.TextWatcher;
 import android.util.Log;
 import android.view.KeyEvent;
 import android.view.LayoutInflater;
+import android.view.MotionEvent;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.BaseAdapter;
@@ -237,6 +240,10 @@ public class PullrefreshListviewAdapter extends BaseAdapter {
         Button butsub1 = (Button) convertView.findViewById(R.id.butsub1);
         final EditText editin1 = (EditText) convertView.findViewById(R.id.editin1);
         editin1.requestFocus();
+
+
+
+
 
 
         butsub1.setOnClickListener(new View.OnClickListener() {

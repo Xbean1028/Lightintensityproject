@@ -11,6 +11,7 @@ import android.os.AsyncTask;
 import android.os.Build;
 import android.os.Bundle;
 import android.os.IBinder;
+import android.os.Looper;
 import android.preference.PreferenceManager;
 import android.support.v7.app.AppCompatActivity;
 import android.text.format.DateFormat;
@@ -22,6 +23,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.view.WindowManager;
 import android.view.inputmethod.InputMethodManager;
+import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.ListView;
@@ -143,7 +145,45 @@ public class MainActivity extends AppCompatActivity {
             }
         });
         //Bean
-
+//        Button butsub1 = (Button) convertView.findViewById(R.id.butsub1);
+//        final EditText editin1 = (EditText) convertView.findViewById(R.id.editin1);
+//        editin1.requestFocus();
+//
+//
+//        butsub1.setOnClickListener(new View.OnClickListener() {
+//
+//            @Override
+//            public void onClick(View v) {
+//
+//
+//                new Thread(new Runnable() {
+//                    @Override
+//                    public void run() {
+//
+//                        String add_url = Config.all_url + "/iocm/app/cmd/v1.4.0/dev0iceCommands?appId=" + login_appid;
+//                        try {
+//
+//                            json = DataManager.Comened_DEVICEID2(mContext, add_url, login_appid, token, deviceId.get(position), editin1.getText().toString());
+//                            if (json.equals(tuatus)) {
+//                                Looper.prepare();
+//                                Toast.makeText(editin1.getContext(), editin1.getText().toString() + " 下发成功", Toast.LENGTH_SHORT).show();
+//                                Looper.loop();
+//                            } else {
+//                                Looper.prepare();
+//                                Toast.makeText(editin1.getContext(), editin1.getText().toString() + " 下发失败", Toast.LENGTH_SHORT).show();
+//                                Looper.loop();
+//                            }
+//
+//
+//                        } catch (Exception e) {
+//                            e.printStackTrace();
+//                        }
+//                    }
+//                }).start();
+//
+//            }
+//
+//        });
         //搜索設備時候監聽圖片
 /*
         imgSrearch.setOnClickListener(new View.OnClickListener() {
@@ -812,7 +852,6 @@ public class MainActivity extends AppCompatActivity {
         hintKbTwo();
     }
     @Override
-
     public boolean onKeyDown(int keyCode, KeyEvent event) {
         /**
          * 监听返回按钮 (back键)
@@ -840,12 +879,14 @@ public class MainActivity extends AppCompatActivity {
         }
         return super.onKeyDown(keyCode, event);
     }
-
+    /**
+     *返回键处理
+     */
     //Bean
     @Override
-    public boolean dispatchKeyEvent( KeyEvent event) {
-        super.dispatchKeyShortcutEvent(event);
-        if (event.getAction() == KeyEvent.ACTION_DOWN && event.getKeyCode() == KeyEvent.KEYCODE_DEL){//监听到删除按钮被按下
+    public boolean dispatchKeyEvent(KeyEvent event) {
+        if (event.getKeyCode() == KeyEvent.KEYCODE_DEL && event.getAction() != KeyEvent.ACTION_UP){
+            //TODO
             EditText editin1 = (EditText)findViewById(R.id.editin1);
             String text = editin1.getText().toString();
             if(text.length() > 0 ){//判断文本框是否有文字，如果有就去掉最后一位
@@ -854,8 +895,23 @@ public class MainActivity extends AppCompatActivity {
                 editin1.setSelection(newText.length());//设置焦点在最后
             };
         }
-        return super.dispatchKeyShortcutEvent(event);
-    }
+
+        return super.dispatchKeyEvent(event);
+}
+//    @Override
+//    public boolean dispatchKeyEvent( KeyEvent event) {
+//        super.dispatchKeyShortcutEvent(event);
+//        if (event.getAction() == KeyEvent.ACTION_DOWN && event.getKeyCode() == KeyEvent.KEYCODE_DEL){//监听到删除按钮被按下
+//            EditText editin1 = (EditText)findViewById(R.id.editin1);
+//            String text = editin1.getText().toString();
+//            if(text.length() > 0 ){//判断文本框是否有文字，如果有就去掉最后一位
+//                String newText = text.substring(0, text.length() - 1);
+//                editin1.setText(newText);
+//                editin1.setSelection(newText.length());//设置焦点在最后
+//            };
+//        }
+//        return super.dispatchKeyShortcutEvent(event);
+//    }
 
     //点击空白处隐藏键盘
     @Override
